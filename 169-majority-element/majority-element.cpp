@@ -7,12 +7,10 @@ public:
         for(int j = 0;j<n;j++){
             if(nums[i]==nums[j]){
                 count++;
-                if(count>n/2){
-                    return nums[i];
-                    break;
-                    
                 }
-            }
+        if(count>n/2){
+            return nums[i];
+        }
         }  
     }
     return nums[0];
