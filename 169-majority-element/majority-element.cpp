@@ -17,10 +17,7 @@ public:
         }
     }
    
-    
-    if(count>=n/2){
-        return ans;
-    }
+   
     return ans;
     
     
