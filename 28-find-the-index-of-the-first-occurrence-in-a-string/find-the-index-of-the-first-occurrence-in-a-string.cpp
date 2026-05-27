@@ -4,8 +4,7 @@ public:
         int n = haystack.length();
         int m = needle.length();
         for(int i = 0 ; i<n;i++){
-            string window = haystack.substr(i,m);
-            if(window == needle){
+            if(haystack.compare(i,m,needle) == 0){
                 return i;
 
             }
