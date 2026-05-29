@@ -35,7 +35,7 @@ public:
         }
         
         }   
-        return nums[n-1];
+        return -1;
         
     }
 };
