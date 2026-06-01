@@ -19,8 +19,12 @@ public:
     }    
     
     int splitArray(vector<int>& nums, int k) {
-        int max = std::accumulate(nums.begin(),nums.end(),0);
+        int max = 0;
         int n = nums.size();
+        for(int i = 0;i<n;i++){
+            max+=nums[i];
+        }
+        
         int st = 0;
         int end = max;
         int ans = 0;
