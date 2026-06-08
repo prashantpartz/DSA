@@ -1,28 +1,19 @@
 class Solution {
 public:
     bool isPalindrome(string s) {
-        string cp = "";
-        string str = "";
-        for(char ch : s){
-            if(int(ch)>=97&&int(ch)<=122){
-                cp +=ch;
-                }
-            else if(int(ch)>=65&&int(ch)<=90){
-               cp += (char)(ch + 32);
+        int left = 0;
+        int right = s.size()-1;
+        while(left<right){
+            while(left<right && !tolower(isalnum(s[left]))){left++;}
+            while(left<right && !tolower(isalnum(s[right]))){right--;}
+            if(tolower(s[left])!=tolower(s[right])){
+                return false;
             }
-            else if(int(ch)>=48 && int(ch)<=57){
-                cp += ch;  
-}
-        
+            left++;
+            right--;
+
         }
-        for(int i = cp.length()-1;  i>=0 ; i--){         
-            str+=cp[i];
-            }
+        return true;
         
-     
-            return str == cp;
-    
-    
-    return false;
     }
 };
