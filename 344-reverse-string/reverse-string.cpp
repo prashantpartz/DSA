@@ -6,9 +6,7 @@ public:
         int end = n-1;
         int temp = 0;
         while(st<end){
-           temp = s[st];
-           s[st] = s[end];
-           s[end] = temp;
+          swap(s[st],s[end]);
             st++;
             end--;
         }
