@@ -1,41 +1,34 @@
 class Solution {
-
 public:
-    bool ispossible (vector<int>& position, int m,int mid,int end){
-        int n = end;
+    bool isPossible(const vector<int>& position, int m, int minDist) {
         int cows = 1;
-        int lastpos = position[0];
-        for(int i = 1;i<position.size();i++){
-            if((position[i]-lastpos)>=mid){
-                cows++;
-                lastpos = position[i];
+        int lastPos = position[0];
+        
+        for (int i = 1; i < (int)position.size(); i++) {
+            if (position[i] - lastPos >= minDist) {
+                if (++cows == m) return true;
+                lastPos = position[i];
             }
-            if(cows==m){
-                return true;
-
-            }
-            
         }
         return false;
     }
+
     int maxDistance(vector<int>& position, int m) {
-        sort(position.begin(),position.end());
-        int st = 1;
-        int cow = 0;
+        sort(position.begin(), position.end());
+        
+        int lo = 1;
+        int hi = (position.back() - position.front()) / (m - 1);
         int ans = 0;
-        int mid = 0;
-        int end = position[position.size()-1];
-        while(st <= end){
-            mid = st + (end-st)/2;
-            if(ispossible(position,m,mid,end)){
+
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (isPossible(position, m, mid)) {
                 ans = mid;
-                st = mid+1;
-                
-            }else{
-                end = mid-1;
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
             }
         }
         return ans;
-        
     }
 };
