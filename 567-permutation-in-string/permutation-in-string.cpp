@@ -1,5 +1,13 @@
 class Solution {
 public:
+    bool check(int srch[], int wind[]){
+        for(int j = 0 ; j<26;j++){
+                if(srch[j]!=wind[j]){
+                    return false;
+                }
+            }
+            return true;
+    }
     bool checkInclusion(string s1, string s2) {
         int srch[26] = {0};
         for(int i = 0 ; i<s1.length();i++){
@@ -21,7 +29,7 @@ public:
                     break;
                 }
             }
-            if(flag)return true;
+            if(check(srch,wind)){return true;}
             
             
         }
