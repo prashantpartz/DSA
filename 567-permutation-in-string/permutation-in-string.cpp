@@ -1,19 +1,35 @@
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {
-        string s3;
-        if(s1.size()>s2.size()){return false;}
-        sort(s1.begin(),s1.end());
-        
-        for(int i = 0 ;(int) i < s2.size()-s1.size()+1;i++){
-            s3 = s2.substr(i,s1.size());
-            sort(s3.begin(),s3.end());
-
-           if(s3 ==s1){
-            return true;
-           }
+        int srch[26] = {0};
+        for(int i = 0 ; i<s1.length();i++){
+            srch[s1[i]-'a']++;
         }
+        for(int i = 0 ;i<s2.length();i++){
+            int wind[26] =  {0};
+            int idx = i; 
+            int win = 0;
+            while(win<s1.length()&&idx<s2.length()){
+                wind[s2[idx]-'a']++;
+                win++;
+                idx++;
+            }
+            bool flag = true;
+            for(int j = 0 ; j<26;j++){
+                if(srch[j]!=wind[j]){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag)return true;
+            
+            
+        }
+        
+        
         return false;
+        
+
         
     }
 };
