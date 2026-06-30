@@ -4,7 +4,6 @@ public:
         int n = s.length();
         reverse(s.begin(),s.end());
         string ans = "";
-        int i = 0;
         for(int i = 0 ;  i < n ; i ++){
             string word = "";
            while(i<n && s[i] != ' '){
