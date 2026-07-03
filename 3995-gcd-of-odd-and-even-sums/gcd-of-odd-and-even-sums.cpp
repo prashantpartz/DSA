@@ -1,21 +1,16 @@
 class Solution {
 public:
     int gcdOfOddEvenSums(int n) {
-        int even = n*(n+1);
-        int odd = n*n;
-        while(even>0 || odd >0){
-            if(even == 0){return odd;}
-            else if(odd == 0){return even;}
-            else{
-                if(even<odd){
-                    odd = odd%even;
-                }else{
-                    even = even % odd;
-                }
-            }
+        int a = n*(n+1);
+        int b = n*n;
+        while(a!=0){
+            int temp = b%a;
+            b = a;
+            a = temp;
+            
         }
         
-        return 0;
+        return b;
         
     }
 };
