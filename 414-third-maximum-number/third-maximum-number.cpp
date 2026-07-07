@@ -1,10 +1,27 @@
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {
-        set<int>num(nums.begin(),nums.end());
-        vector<int>cop(num.begin(),num.end());
-        int n = cop.size();
-        if(n<3){return cop[n-1];}
-        return cop[n-3]; 
+        long first = LONG_MIN, second = LONG_MIN, third = LONG_MIN;
+        
+        for (int n : nums) {
+            if (n == first || n == second || n == third) continue; // skip duplicates
+            
+            if (n > first) {
+                third = second;
+                second = first;
+                first = n;
+            } else if (n > second) {
+                third = second;
+                second = n;
+            } else if (n > third) {
+                third = n;
+            }
+        }
+        
+        if (third == LONG_MIN) {
+    return first;
+} else {
+    return third;
+}
     }
 };
