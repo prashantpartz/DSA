@@ -1,27 +1,29 @@
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {
-        long first = LONG_MIN, second = LONG_MIN, third = LONG_MIN;
-        
-        for (int n : nums) {
-            if (n == first || n == second || n == third) continue; // skip duplicates
-            
-            if (n > first) {
+        int n = nums.size();
+        long first = LONG_MIN;
+        long second = LONG_MIN;
+        long third = LONG_MIN;
+        for(int i = 0 ; i < n ; i++){
+            if(first == nums[i]||second == nums[i]|| third == nums[i]){continue;}
+            if(nums[i]>first){
                 third = second;
                 second = first;
-                first = n;
-            } else if (n > second) {
+                first = nums[i];
+            }else if(nums[i]>second){
                 third = second;
-                second = n;
-            } else if (n > third) {
-                third = n;
+                second = nums[i];
+            }else if(nums[i] > third){
+                third = nums[i];
             }
+
+        }
+        if(third == LONG_MIN){
+            return first;
+        }else{
+            return third;
         }
         
-        if (third == LONG_MIN) {
-    return first;
-} else {
-    return third;
-}
     }
 };
