@@ -1,16 +1,22 @@
 class Solution {
 public:
     int firstUniqChar(string s) {
-        int count[26] = {0}; 
-        for (unsigned char c : s) {
-            count[c - 'a']++;
-        }
+        int count[26] = {0};
+        int firstIndex[26];
+        fill(firstIndex, firstIndex + 26, -1);
 
         for (int i = 0; i < s.size(); i++) {
-            if (count[s[i] - 'a'] == 1) {
-                return i;
+            int idx = s[i] - 'a';
+            if (firstIndex[idx] == -1) firstIndex[idx] = i;
+            count[idx]++;
+        }
+
+        int result = INT_MAX;
+        for (int i = 0; i < 26; i++) {
+            if (count[i] == 1 && firstIndex[i] < result) {
+                result = firstIndex[i];
             }
         }
-        return -1;
+        return result == INT_MAX ? -1 : result;
     }
 };
