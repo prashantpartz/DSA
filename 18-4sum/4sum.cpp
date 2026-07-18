@@ -19,6 +19,8 @@ public:
                         p++;
                         q--;
                         while(p<q && nums[p]==nums[p-1])p++;
+                        while(p<q && nums[q]==nums[q+1])q--;
+
                     }
                 }
             }
