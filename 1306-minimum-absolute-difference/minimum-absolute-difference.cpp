@@ -7,14 +7,16 @@ public:
         int n = arr.size();
         for(int i = 1;i<n;i++){
             int dif = abs(arr[i]-arr[i-1]);
-            if(min > dif)min=dif;
-        }
-        for(int i = 1;i<n;i++){
-            int dif = (arr[i]-arr[i-1]);
-            if(dif==min){
+            if(min > dif){
+                min=dif;
+                ans.clear();
                 ans.push_back({arr[i-1],arr[i]});
+            }else if(min==dif){
+                ans.push_back({arr[i-1],arr[i]});
+
             }
         }
+
             return ans;
         
     }
