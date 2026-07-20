@@ -10,7 +10,7 @@ public:
             if(min > dif)min=dif;
         }
         for(int i = 1;i<n;i++){
-            int dif = abs(arr[i]-arr[i-1]);
+            int dif = (arr[i]-arr[i-1]);
             if(dif==min){
                 ans.push_back({arr[i-1],arr[i]});
             }
