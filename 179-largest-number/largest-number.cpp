@@ -11,7 +11,7 @@ public:
             return a + b > b + a;
         });
 
-        // Step 3: Join all sorted strings together
+    
         string ans = "";
         for (string s : strs) {
             ans += s;
