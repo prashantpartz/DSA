@@ -1,27 +1,19 @@
 class Solution {
 public:
     int romanToInt(string t) {
+        int vals[128] = {0}; // fixed-size array, O(1) space, no hashing
+        vals['I']=1; vals['V']=5; vals['X']=10; vals['L']=50;
+        vals['C']=100; vals['D']=500; vals['M']=1000;
+        
         int sum = 0;
-        unordered_map<char,int>s;
-        s['I']=1;
-        s['V']=5;
-        s['V']=5;
-        s['X']=10;
-        s['L']=50;
-        s['C']=100;
-        s['D']=500;
-        s['M']=1000;
-        for(int i =  0 ; i<t.size();i++){
-            if(i+1<t.size()&&s[t[i]]<s[t[i+1]]){
-                sum -=s[t[i]];
-            }else{
-                sum +=s[t[i]];
+        int n = t.size();
+        for(int i = 0; i < n; i++){
+            if(i+1 < n && vals[t[i]] < vals[t[i+1]]){
+                sum -= vals[t[i]];
+            } else {
+                sum += vals[t[i]];
             }
-            
         }
         return sum;
-        
-
-        
     }
 };
