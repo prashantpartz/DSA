@@ -1,7 +1,7 @@
 class Solution {
 public:
     int romanToInt(string t) {
-        int vals[128] = {0}; // fixed-size array, O(1) space, no hashing
+        int vals[128] = {0}; 
         vals['I']=1; vals['V']=5; vals['X']=10; vals['L']=50;
         vals['C']=100; vals['D']=500; vals['M']=1000;
         
