@@ -1,15 +1,21 @@
 class Solution {
 public:
     int longestPalindrome(string s) {
-        unordered_map<char,int> freq;
-        for (char ch : s) freq[ch]++;
-
         int ans = 0;
-        bool hasOdd = false;
-        for (auto& [ch, cnt] : freq) {
-            ans += (cnt / 2) * 2;
-            if (cnt % 2 == 1) hasOdd = true;
+        unordered_map<char,int>freq;
+        for(char ch : s){
+            freq[ch]++;
         }
-        return hasOdd ? ans + 1 : ans;
+        bool add = false;
+        for(auto&[ch,i]:freq){
+            ans += (i/2)*2;
+            if(i%2==1){
+                add = true;
+            }
+            
+        }
+        
+        return add ? ans+1:ans;
+        
     }
 };
