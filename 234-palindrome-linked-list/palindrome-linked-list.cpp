@@ -10,25 +10,14 @@
  */
 class Solution {
 public:
-    bool isPalindrome(ListNode* head) {
-        ListNode*temp = head;
-        stack<int>st;
-        while(temp!=NULL){
-                st.push(temp->val);
-                temp = temp->next;
-            }
-        temp = head;
-        while(temp!=NULL){
-                if(st.top()!=temp->val){
-                    return false;
-                }
-                temp = temp->next;
-                st.pop();
-            }
-        
-    
-    return true;
-        
-        
+   bool isPalindrome(ListNode* head) {
+    stack<int> st;
+    for (ListNode* t = head; t; t = t->next) st.push(t->val);
+
+    for (ListNode* t = head; t; t = t->next) {
+        if (t->val != st.top()) return false;
+        st.pop();
     }
+    return true;
+}
 };
